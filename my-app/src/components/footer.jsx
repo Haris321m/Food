@@ -3,22 +3,25 @@ import logo from './imgs/logo.png'
 import playstor from './imgs/download-1.png'
 import appstor from './imgs/download-2.png'
 import { Link } from 'react-router-dom'
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 function Footer(){
 
     return(
 
         <>
-        
+
             <div className="footer bg-green-900 text-white p-10">
                 <div className="top flex justify-center items-center">
                     <div className="logo">
                         <img src={logo} alt="" />
                     </div>
-                    <div className="social">
-                        <img src="" alt="" />
-                        <img src="" alt="" />
-                        <img src="" alt="" />
+                    <div className="social flex">
+                        <h1 className='text-4xl ml-8 hover:cursor-pointer hover:text-greenyellow'><FaFacebook /></h1>
+                        <h1 className='text-4xl ml-8 hover:cursor-pointer hover:text-greenyellow'><FaTwitter /></h1>
+                        <h1 className='text-4xl ml-8 hover:cursor-pointer hover:text-greenyellow'><IoLogoWhatsapp /></h1>
                     </div>
                 </div>
                 <div className="bottom flex justify-between mt-10 lg:px-20 md:px-10">

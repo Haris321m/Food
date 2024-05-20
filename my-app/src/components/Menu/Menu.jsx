@@ -1,3 +1,4 @@
+// Menu.js
 import React, { useState } from 'react';
 import Explore from './Explore/explore';
 import Promotions from './Promotions/Promotions';
@@ -10,7 +11,7 @@ function Menu() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const parsePrice = (price) => {
-    // Ensure price is a string and remove 'Rs ' prefix, then parse to integer
+    // Ensure price is a string and remove 'Rs ' prefix, then parse to an integer
     if (typeof price === 'string') {
       const parsedPrice = parseInt(price.replace('Rs ', ''), 10);
       if (!isNaN(parsedPrice)) {
@@ -24,18 +25,17 @@ function Menu() {
   const addToCart = (item) => {
     const itemPrice = parsePrice(item.price);
     setCartItems([...cartItems, item]);
-    setTotalPrice(prevTotal => prevTotal + itemPrice);
+    setTotalPrice((prevTotal) => prevTotal + itemPrice);
     console.log(`Added item: ${item.title}, Price: ${itemPrice}, Total Price: ${totalPrice}`);
   };
-  
+
   const removeFromCart = (index) => {
     const item = cartItems[index];
     const itemPrice = parsePrice(item.price);
     setCartItems(cartItems.filter((_, i) => i !== index));
-    setTotalPrice(prevTotal => prevTotal - itemPrice);
+    setTotalPrice((prevTotal) => prevTotal - itemPrice);
     console.log(`Removed item: ${item.title}, Price: ${itemPrice}, Total Price: ${totalPrice}`);
   };
-
 
   return (
     <>

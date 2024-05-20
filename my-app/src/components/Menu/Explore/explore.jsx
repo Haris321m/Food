@@ -1,8 +1,12 @@
-import React from 'react';
+// Explore.js
+import React, { useContext } from 'react';
 import Content from './list';
 import Cards from './cards';
+import { CartContext } from '../../cart/CartContent';
 
-function Explore({ addToCart }) {
+function Explore() {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <>
       <h1 className="text-4xl font-bold">EXPLORE MENU</h1>

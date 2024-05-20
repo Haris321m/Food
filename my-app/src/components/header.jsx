@@ -42,9 +42,11 @@ function Header() {
           <Link to="/contact" className="list-none ml-10 hover:text-[greenyellow] cursor-pointer font-medium text-xl">Contact</Link>
         </div>
         <div className="btn flex items-center">
-          <button className="p-3 border-3 border-[greenyellow] rounded-xl text-xl hover:bg-green-700 transition">
-            <BsCart />
-          </button>
+        <Link to="/cart">
+        <button className="p-3 border-3 border-[greenyellow] rounded-xl text-xl hover:bg-green-700 transition">
+          <BsCart />
+        </button>
+      </Link>
           <Link to="/login">
             <button className="px-4 py-2 border-3 border-[greenyellow] rounded-xl text-xl ml-5 hover:bg-green-700 transition">
               LOGIN
