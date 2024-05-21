@@ -7,7 +7,7 @@ function Cart() {
 
   return (
     <div className='bg-darkgreen rounded-xl w-80% m-auto p-5 my-10 '>
-      <div className="header">{cart.length} items</div>
+      <div className="header border-b-2 border-green-900 text-2xl font-bold text-white p-5">{cart.length} items</div>
       <div className="main h-96 overflow-y-auto">
         {cart.map((item) => (
           <div key={item.id} className="cart-item flex mt-4">
@@ -25,8 +25,8 @@ function Cart() {
           </div>
         ))}
       </div>
-      <div className="footer">
-        <h1>Rs {totalPrice}</h1>
+      <div className="footer flex justify-between bg-green-900 p-5 rounded-xl">
+        <h1 className='font-bold text-white text-2xl'>Rs {totalPrice}</h1>
         <button className="proceed-button bg-blue-500 text-white px-4 py-2 mt-2 rounded">
           Proceed
         </button>

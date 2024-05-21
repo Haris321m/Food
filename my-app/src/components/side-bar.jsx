@@ -8,7 +8,7 @@ function SideBar({ isVisible }) {
     return (
         <div className={`SideBar pt-10 w-20% bg-white top-0 h-full fixed z-10 ${isVisible ? '' : 'hidden'}`}>
             <div className="btn ml-10 pb-5">
-                <button className='py-3 px-6 bg-green-900 text-white text-xl rounded-xl hover:cursor-pointer hover:bg-darkgreen'>Login</button>
+                <Link to='/login'><button className='py-3 px-6 bg-green-900 text-white text-xl rounded-xl hover:cursor-pointer hover:bg-darkgreen'>Login</button></Link>
             </div>
             <div className="customer border-y-2 border-black py-10 px-5">
                 <ul className='list-none'>

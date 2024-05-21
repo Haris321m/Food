@@ -1,18 +1,16 @@
-// BestSelling.js
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 import Content from "./list.js";
 import Cards from './cards';
 import Poster from './poster.jsx';
 import { CartContext } from '../../cart/CartContent.jsx';
 
 function BestSelling() {
-  const [selected, setSelected] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const { addToCart } = useContext(CartContext);
 
-  const handleImgClick = (imageSrc) => {
-    console.log("Clicked image source:", imageSrc);
-    setSelected(imageSrc);
+  const handleImgClick = (card) => {
+    setSelectedCard(card);
     setIsVisible(true);
   };
 
@@ -20,27 +18,35 @@ function BestSelling() {
     setIsVisible(false);
   };
 
-  const handleAddToCart = (item) => {
-    addToCart({ ...item, count: 1 }); // Initial count is 1
+  const handleAddToCart = () => {
+    addToCart({ ...selectedCard, count: 1 }); // Initial count is 1
     setIsVisible(false);
   };
 
+  // Shuffle the content array and select the first three elements
+  const shuffledContent = Content.sort(() => Math.random() - 0.5).slice(0, 3);
+
   return (
     <div className="text-center relative">
-      <h1 className="text-center lg:mt-52 md:mt-32 text-5xl font-medium border-b-8 pb-3 border-green-900 inline-block">Best Selling</h1>
-      <div className="BestSelling grid lg:grid-cols-3 md:grid-cols-2 px-20 gap-10 mt-10 text-left">
-        {Content.map((status, index) => (
+      <h1 className="text-center lg:mt-12 md:mt-10 sm:mt-8 text-3xl lg:text-5xl font-medium border-b-8 pb-3 border-green-900 inline-block">Best Selling</h1>
+      <div className="BestSelling grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 px-5 lg:px-20 gap-5 mt-5">
+        {shuffledContent.map((status, index) => (
           <Cards
             key={index}
             img={status.img}
             title={status.title}
             aditional={status.aditional}
             price={status.price}
-            onClick={() => handleImgClick(status.img)}
+            onClick={() => handleImgClick(status)}
           />
         ))}
       </div>
-      {isVisible && <Poster img={selected} onClose={handleClosePoster} onAddToCart={handleAddToCart} />}
+      {isVisible && (
+        <>
+          <div className="fixed inset-0 bg-black opacity-50 z-10" onClick={handleClosePoster}></div>
+          <Poster card={selectedCard} onClose={handleClosePoster} onAddToCart={handleAddToCart} />
+        </>
+      )}
     </div>
   );
 }
